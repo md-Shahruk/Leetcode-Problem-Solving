@@ -71,7 +71,30 @@ class LinkedList:
         new_data.next = cur.next
         cur.next = new_data
         self.size += 1
+    
+    def delete_positionBased(self, position):
+        if position < 0 or position > self.size:
+            return 
+        if position == 0:
+            self.deleteFirst()
+            return
         
+        cur = self.head
+        for _ in range(position - 1):
+            cur = cur.next
+        cur.next = cur.next.next
+        if position == self.size - 1:
+            self.tail = cur
+        self.size -= 1
+        
+    def search_value(self, data):
+        cur = self.head
+        position = 0
+        for i in range(self.size):
+            if cur.data == data:
+                return position
+            cur = cur.next
+            position += 1
     
     def printList(self):
         current = self.head
@@ -93,5 +116,7 @@ l.deleteLast()
 l.printList()
 l.add_positonBased(7,1)
 l.printList()
-
-        
+l.delete_positionBased(1)
+l.printList()
+print(l.size)
+print(l.search_value(10))
