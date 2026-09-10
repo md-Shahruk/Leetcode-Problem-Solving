@@ -7,6 +7,8 @@
    - take f and s and f start n step ahead
    - while there is no f.next then the point s.next is the one step ahead what we want to delete just shift next value
    - Time: O(n) and Space: O(1)
+   
+   - also brute force can solve this just handle extra variable for calculate len
 
 """
 
@@ -29,19 +31,35 @@ class LinkedList:
         curr.next = new_node
         self.size += 1
         
-    def deleteNthEnd(self, n):
-        f = self.dummy_node
-        s = self.dummy_node
+    # def deleteNthEnd(self, n):
+    #     f = self.dummy_node
+    #     s = self.dummy_node
         
-        for _ in range(n):
-            f = f.next
+    #     for _ in range(n):
+    #         f = f.next
         
-        while f.next:
-            s = s.next
-            f = f.next
-        s.next = s.next.next 
-        
+    #     while f.next:
+    #         s = s.next
+    #         f = f.next
+    #     s.next = s.next.next 
     
+    def deleteNthEnd(self, n):
+        
+        curr = self.dummy_node
+        l = 0
+        
+        while curr.next:
+            l += 1
+            curr = curr.next
+        
+        p = l - n + 1
+        
+        curr = self.dummy_node
+        for _ in range(p-1):
+            curr = curr.next
+        curr.next = curr.next.next
+            
+        
     def printList(self):
         curr = self.dummy_node.next
         while curr is not None:
@@ -63,5 +81,5 @@ li.addlast(8)
 
 li.printList()
 print("\n")
-li.deleteNthEnd(2)
+li.deleteNthEnd(8)
 li.printList()
