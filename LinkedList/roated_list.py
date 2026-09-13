@@ -1,4 +1,15 @@
 
+"""  
+  Solve: 
+  - first find tail from list
+  - then update before tail node to none
+  - tail connect to head and rest of the after head
+  - but i see after implementation Time O(n x k) not accept in leetcode
+  
+  I see a pattern:
+  - we can reduce k repetation by doing k % len(list),because len(list) = 5, k =7 then k = 2 thats more than enough to get solution
+
+"""
 class Node:
     def __init__(self, val=0, next=None):
         self.val = val 
@@ -17,19 +28,16 @@ def rotate_list(node, k):
    
     if node is None or node.next is None or k == 0:
         return node 
-    while k > 0:
-        curr = dummy
-        while curr.next:
-            curr = curr.next
-        tail = curr
-        c = dummy
-        while c.next.next:
-            c = c.next
-        c.next = None
-        tail.next = dummy.next
-        dummy.next = tail
-        k -= 1
-    return dummy.next
+    
+    curr = dummy
+    l = 0
+    while curr.next:
+        curr = curr.next
+        l += 1 
+    tail = curr 
+    
+    
+    
         
             
     
