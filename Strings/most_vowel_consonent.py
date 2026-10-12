@@ -18,7 +18,7 @@ def solve(s):
     
     max_v = max(vow.values()) if vow else 0
     max_c = max(con.values()) if con else 0
-    return max_v + max_c
+    maxx =  max_v + max_c
     return maxx
   
 
