@@ -5,6 +5,8 @@
 - Time: O(logn) but worst case O(n) becasue high = high - 1
 - So, insted of using high = high - 1 we can do high = mid - 1
 '''
+import utils.transport
+import utils.session
 def binarySearch(nums, target):
     low, high = 0, len(nums) - 1 
     while low <= high:
